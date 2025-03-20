@@ -92,3 +92,22 @@ Identificador de Doenças:
 ![Image](https://github.com/user-attachments/assets/006e7a5c-38a0-4feb-98ad-eee7b930b4d4)
 
 ![Image](https://github.com/user-attachments/assets/73ba81a7-7045-4caf-a9fc-c12e93027298)
+
+## 4. Arquitetura Monolítica
+
+A estrutura foi implementada devido aos pontos:
+
+- Desenvolvimento eficiente:
+Implementação inicial rápida e direta
+Base de código única que facilita o entendimento geral
+Integração simplificada dos componentes
+
+
+- Manutenção simplificada:
+Testes mais simples de executar
+Padronização natural dos padrões de código
+
+
+- Performance otimizada:
+Comunicação mais rápida entre componentes
+Menor latência nas operações
