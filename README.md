@@ -98,16 +98,16 @@ Identificador de Doenças:
 A estrutura foi implementada devido aos pontos:
 
 - Desenvolvimento eficiente:
-Implementação inicial rápida e direta
-Base de código única que facilita o entendimento geral
-Integração simplificada dos componentes
+  - Implementação inicial rápida e direta
+  - Base de código única que facilita o entendimento geral
+  - Integração simplificada dos componentes
 
 
 - Manutenção simplificada:
-Testes mais simples de executar
-Padronização natural dos padrões de código
+  - Testes mais simples de executar
+  - Padronização natural dos padrões de código
 
 
 - Performance otimizada:
-Comunicação mais rápida entre componentes
-Menor latência nas operações
+  - Comunicação mais rápida entre componentes
+  - Menor latência nas operações
