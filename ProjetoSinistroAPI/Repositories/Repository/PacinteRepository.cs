@@ -49,7 +49,7 @@ namespace ProjetoSinistroAPI.Repositories.Repository
 
         public IEnumerable<PacienteModel> List()
         {
-            return _context.Paciente.ToList();
+            return [.. _context.Paciente];
         }
 
         public PacienteModel Update(PacienteModel model)

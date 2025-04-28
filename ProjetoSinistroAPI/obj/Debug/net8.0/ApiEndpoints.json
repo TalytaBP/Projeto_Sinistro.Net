@@ -1,0 +1,91 @@
+[
+  {
+    "ContainingType": "ProjetoSinistroAPI.Controllers.SintomasController",
+    "Method": "IdentificarSintomas",
+    "RelativePath": "api/Sintomas/identificar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ProjetoSinistroAPI.Dtos.IdentificarSintomasRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "Tags": [
+      "Identificador de Doen\u00E7as"
+    ]
+  },
+  {
+    "ContainingType": "ProjetoSinistroAPI.Controllers.PacienteController",
+    "Method": "Post",
+    "RelativePath": "Paciente/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pac",
+        "Type": "ProjetoSinistroAPI.Model.PacienteModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "Tags": [
+      "Cadastro de Pacientes"
+    ]
+  },
+  {
+    "ContainingType": "ProjetoSinistroAPI.Controllers.PacienteController",
+    "Method": "Delete",
+    "RelativePath": "Paciente/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [],
+    "Tags": [
+      "Cadastro de Pacientes"
+    ]
+  },
+  {
+    "ContainingType": "ProjetoSinistroAPI.Controllers.PacienteController",
+    "Method": "Get",
+    "RelativePath": "Paciente/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [],
+    "Tags": [
+      "Cadastro de Pacientes"
+    ]
+  },
+  {
+    "ContainingType": "ProjetoSinistroAPI.Controllers.PacienteController",
+    "Method": "Put",
+    "RelativePath": "Paciente/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pac",
+        "Type": "ProjetoSinistroAPI.Model.PacienteModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "Tags": [
+      "Cadastro de Pacientes"
+    ]
+  }
+]

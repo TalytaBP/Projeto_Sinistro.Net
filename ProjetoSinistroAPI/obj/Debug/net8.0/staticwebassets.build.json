@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "wgaoCT/odrl1Z808YcJT+FoLaf9Dc9z3YJmUCx4fDSg=",
+  "Hash": "Jrn1uzieaeO+7gHfvgTmobtiuP8n6ewGOq6/DOXFAQc=",
   "Source": "ProjetoSinistroAPI",
   "BasePath": "_content/ProjetoSinistroAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

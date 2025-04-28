@@ -1,0 +1,197 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ODONTOPREV - PACIENTES",
+    "description": "Gerenciar Pacientes",
+    "contact": {
+      "name": "ODONTOPREV",
+      "url": "https://www.odontoprev.com.br/",
+      "email": "canaisdigitais@odontoprev.com.br. "
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/Paciente/List": {
+      "get": {
+        "tags": [
+          "Cadastro de Pacientes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Paciente/Add": {
+      "post": {
+        "tags": [
+          "Cadastro de Pacientes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Paciente/Update": {
+      "put": {
+        "tags": [
+          "Cadastro de Pacientes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PacienteModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Paciente/Delete": {
+      "delete": {
+        "tags": [
+          "Cadastro de Pacientes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Sintomas/identificar": {
+      "post": {
+        "tags": [
+          "Identificador de Doenças"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IdentificarSintomasRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IdentificarSintomasRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IdentificarSintomasRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IdentificarSintomasRequestDto": {
+        "type": "object",
+        "properties": {
+          "sintomas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PacienteModel": {
+        "required": [
+          "datanascimento",
+          "email",
+          "nome",
+          "pacienteId"
+        ],
+        "type": "object",
+        "properties": {
+          "pacienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "datanascimento": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Basic Authorization Header",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}
