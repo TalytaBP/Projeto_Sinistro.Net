@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoSinistroAPI.Dtos;
+using ProjetoSinistroAPI.Services;
+using System.Linq;
 
 namespace ProjetoSinistroAPI.Controllers
 {
@@ -9,6 +11,13 @@ namespace ProjetoSinistroAPI.Controllers
     [Tags("Identificador de Doenças")]
     public class SintomasController : Controller
     {
+        private readonly ISymptomClassificationService _symptomService;
+
+        public SintomasController(ISymptomClassificationService symptomService)
+        {
+            _symptomService = symptomService;
+        }
+
         [HttpPost("identificar")]
         public IActionResult IdentificarSintomas([FromBody] IdentificarSintomasRequestDto request)
         {
@@ -17,34 +26,31 @@ namespace ProjetoSinistroAPI.Controllers
                 return BadRequest("A lista de sintomas não pode estar vazia.");
             }
 
-            var response = new IdentificarSintomasResponseDto();
+            var symptomsText = string.Join(", ", request.Sintomas);
+            var disease = _symptomService.PredictDisease(symptomsText);
+            var recommendation = _symptomService.GenerateRecommendation(disease);
 
-            if (request.Sintomas.Contains("dor de dente"))
+            var response = new IdentificarSintomasResponseDto
             {
-                response.Doenca = "Cárie";
-           
-                response.Recomendacao = "Agendar consulta com dentista especialista.";
-            }
-            else if (request.Sintomas.Contains("sensibilidade ao frio"))
-            {
-                response.Doenca = "Hipersensibilidade dentária";
-             
-                response.Recomendacao = "Usar creme dental para dentes sensíveis.";
-            }
-            else if (request.Sintomas.Contains("sangramento nas gengivas"))
-            {
-                response.Doenca = "Gengivite";
-               
-                response.Recomendacao = "Visitar um dentista para limpeza.";
-            }
-            else
-            {
-                response.Doenca = "Desconhecida";
-               
-                response.Recomendacao = "Agende uma consulta ao dentista.";
-            }
+                Doenca = disease,
+                Recomendacao = recommendation
+            };
 
             return Ok(response);
+        }
+
+        [HttpPost("gerar-recomendacao")]
+        public IActionResult GerarRecomendacao([FromBody] IdentificarSintomasRequestDto request)
+        {
+            if (request?.Sintomas == null || !request.Sintomas.Any())
+            {
+                return BadRequest("A lista de sintomas não pode estar vazia.");
+            }
+
+            var symptomsText = string.Join(", ", request.Sintomas);
+            var recommendation = _symptomService.GenerateRecommendation(symptomsText);
+
+            return Ok(new { Recomendacao = recommendation });
         }
     }
 }

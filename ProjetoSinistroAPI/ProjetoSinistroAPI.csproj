@@ -18,6 +18,9 @@
     </PackageReference>
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.80" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <!-- Removed ML.NET packages due to restore issues -->
+    <!-- <PackageReference Include="Microsoft.ML" Version="1.7.1" /> -->
+    <!-- <PackageReference Include="Microsoft.ML.Transforms.Text" Version="1.7.1" /> -->
   </ItemGroup>
 
 </Project>
