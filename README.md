@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Projeto Sinistro .NET
 
  <img src="https://img.shields.io/badge/status-desenvolvimento-green?style=for-the-badge">
@@ -111,3 +112,6 @@ A estrutura foi implementada devido aos pontos:
 - Performance otimizada:
   - Comunicação mais rápida entre componentes
   - Menor latência nas operações
+=======
+# ProjetoSinistro.NET
+>>>>>>> c6312f753e711ede03aead0f350cd90c3d1dc76f
