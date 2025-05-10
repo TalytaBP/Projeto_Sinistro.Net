@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Projeto Sinistro .NET
 
  <img src="https://img.shields.io/badge/status-desenvolvimento-green?style=for-the-badge">
