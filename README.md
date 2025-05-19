@@ -1,7 +1,7 @@
 
 # Projeto Sinistro .NET
 
- <img src="https://img.shields.io/badge/status-desenvolvimento-green?style=for-the-badge">
+ <img src="https://img.shields.io/badge/status-concluido-green?style=for-the-badge">
 
  ## Tecnologias
 <div>
