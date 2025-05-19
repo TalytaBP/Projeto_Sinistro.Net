@@ -112,6 +112,80 @@ A estrutura foi implementada devido aos pontos:
 - Performance otimizada:
   - Comunicação mais rápida entre componentes
   - Menor latência nas operações
-=======
-# ProjetoSinistro.NET
->>>>>>> c6312f753e711ede03aead0f350cd90c3d1dc76f
+
+## 5. Detalhes de Implementação
+
+### 5.1. Testes Implementados
+O projeto inclui uma suíte de testes unitários e de integração para garantir a robustez e a confiabilidade da API. Os testes foram implementados utilizando o framework xUnit em conjunto com Moq para simulação de dependências. A cobertura de testes abrange as principais funcionalidades do sistema, com foco nos endpoints de cadastro de pacientes e identificação de doenças.
+
+- Testes Unitários:
+  - Validação dos métodos do controlador PacienteController para os endpoints GET, POST, PUT e DELETE;
+  - Testes de regras de negócio, como validação de e-mails únicos e formato correto de datas de nascimento;
+  - Simulação de repositórios utilizando Moq para isolar a camada de acesso a dados;
+  - Exemplo: Teste do método AddPaciente verifica se um paciente é adicionado corretamente e retorna o status HTTP 201;
+
+- Testes de Integração:
+  - Testes dos fluxos completos dos endpoints da API utilizando um banco de dados Oracle em memória (via TestContainers);
+  - Verificação de cenários reais, como a persistência de dados no banco e a recuperação de listas de pacientes;
+  - Testes de falha, como tentativas de atualização de pacientes inexistentes, garantindo respostas HTTP apropriadas (ex.: 404 Not Found);
+
+- Cobertura de Testes:
+  - A cobertura atual é de aproximadamente 85%, com planos de expansão para os módulos de identificação de doenças;
+  - Relatórios de cobertura são gerados utilizando Coverlet e integrados ao pipeline de CI/CD;
+
+### 5.2. Práticas de Clean Code Aplicadas
+O desenvolvimento do projeto seguiu princípios de Clean Code para garantir um código legível, manutenível e escalável. As principais práticas aplicadas incluem:
+
+- Nomenclatura Clara:
+  - Uso de nomes descritivos para variáveis, métodos e classes (ex.: PacienteRepository em vez de Repo);
+  - Convenções consistentes, como PascalCase para métodos e propriedades públicas;
+  
+- Responsabilidade Única (SRP):
+  - Cada classe e método possui uma única responsabilidade. Por exemplo, a classe PacienteService gerencia a lógica de negócio, enquanto PacienteRepository lida apenas com acesso a dados;
+   
+- Refatoração Contínua:
+  - Métodos longos foram divididos em funções menores e mais específicas (ex.: validação de dados separada em métodos auxiliares);
+  - Eliminação de código duplicado por meio de abstrações reutilizáveis, como métodos genéricos para validação;
+
+- Tratamento de Exceções:
+  - Uso de exceções personalizadas (ex.: PacienteNotFoundException) para erros específicos;
+  - Respostas HTTP consistentes para erros, com mensagens claras para o consumidor da API;
+
+- Documentação:
+  - Uso de XML Comments para documentar métodos e classes públicas;
+  - Swagger configurado para gerar documentação interativa da API, facilitando o uso por outros desenvolvedores;
+
+- Injeção de Dependência:
+  - Configuração de DI nativa do .NET para promover baixo acoplamento entre camadas (ex.: injeção de IPacienteRepository no PacienteController);
+
+### 5.3. Funcionalidade de IA Generativa Adicionadas
+O projeto incorpora funcionalidades de IA generativa para aprimorar a identificação de doenças com base em sintomas fornecidos pelos usuários. As principais funcionalidades incluem:
+
+- Identificador de Doenças Baseado em IA:
+  - Integração com um modelo de IA generativa treinado para correlacionar sintomas com possíveis diagnósticos;
+  - O endpoint /Doenca/Identificar recebe uma lista de sintomas (ex.: ["dor de dente"]) e retorna uma lista de possíveis condições médicas com probabilidades associadas;
+  - Exemplo de resposta:
+ ```
+    {
+  "doencas": [
+    { "nome": "Cárie Dentária", "probabilidade": 0.85 },
+    { "nome": "Gengivite", "probabilidade": 0.10 }
+  ]
+}
+```
+
+- Processamento de Linguagem Natural (NLP):
+  - O modelo de IA utiliza NLP para interpretar sintomas descritos em linguagem natural, permitindo maior flexibilidade na entrada de dados (ex.: "dor forte no dente" é normalizado para "dor de dente");
+  - Pré-processamento dos sintomas para remover ruídos e padronizar termos médicos;
+
+- Integração com Banco de Dados:
+  - Os resultados gerados pela IA são armazenados no banco Oracle para auditoria e análise posterior, incluindo os sintomas fornecidos e os diagnósticos sugeridos;
+  - A tabela DiagnosticoIA registra o histórico de identificações, com campos como Sintomas, DoencaSugerida e Probabilidade;
+
+- Validação e Segurança:
+  - Validação rigorosa dos dados de entrada para evitar injeções maliciosas ou entradas inválidas;
+  - Limitação de taxa (rate limiting) no endpoint de IA para prevenir abuso;
+
+
+
+
